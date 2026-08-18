@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Happy Birthday Shikha 🎂</title>
+<!-- Google Fonts for clean typography -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
   :root{
     --pink-1:#ffd6e8;
@@ -11,15 +16,15 @@
     --lav-1:#e6d9ff;
     --lav-2:#f3ecff;
     --peach:#ffe3d0;
-    --text-dark:#4a2d4a;
-    --accent:#ff5c98;
-    --accent-2:#9d65ff;
+    --text-dark:#2d1b2d;
+    --accent:#ff4d8d;
+    --accent-2:#8a4fff;
     --white:#ffffff;
   }
   *{box-sizing:border-box;}
   html,body{
     margin:0;padding:0;width:100%;height:100%;
-    font-family:'Segoe UI', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family:'Poppins', sans-serif;
     overflow-x:hidden;
   }
   body{
@@ -38,7 +43,7 @@
     100%{background-position:0% 50%;}
   }
 
-  /* ---------- SCREEN 1: NOTE CARD ---------- */
+  /* ---------- SCREEN 1: NOTE OVER BACKGROUND ---------- */
   .screen{
     width:100%;
     min-height:100vh;
@@ -47,58 +52,52 @@
     justify-content:center;
     position:relative;
     padding:20px;
-  }/* ---------- SCREEN 1: NOTE CARD ---------- */
-  .screen{
-    width:100%;
-    min-height:100vh;
-    display:flex;
-    align-items:flex-end;
-    justify-content:center;
-    position:relative;
-    padding:20px 20px 40px;
   }
   #noScreen{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('bg.jpg.png');
-    background-size: contain;
-    background-position: center top;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.4)), url('bg.jpg.png');
+    background-size: cover;
+    background-position: center center;
     background-repeat: no-repeat;
-    background-color: #fdf6f9;
+    background-attachment: fixed;
   }
   .note-card{
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 24px;
-    max-width: 480px;
+    max-width: 520px;
     width: 100%;
-    padding: 24px 22px 28px;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+    padding: 34px 28px 38px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
     text-align: center;
-    animation: floatIn 0.9s ease;
+    animation: floatIn 0.9s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     z-index: 2;
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1.5px solid rgba(255, 255, 255, 0.7);
   }
   @keyframes floatIn{
     from{opacity:0; transform:translateY(30px) scale(0.96);}
     to{opacity:1; transform:translateY(0) scale(1);}
   }
   .note-card h1{
-    font-size:1.75rem;
-    margin:0 0 16px;
-    background:linear-gradient(90deg,var(--accent),var(--accent-2));
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-    font-weight:700;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin: 0 0 14px;
+    background: linear-gradient(90deg, #ff3377, #7c3aed);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
   }
   .note-card p{
-    color:var(--text-dark);
-    font-size:1.02rem;
-    line-height:1.7;
-    text-align:left;
-    white-space:pre-line;
-    margin:0 0 26px;
+    color: var(--text-dark);
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: left;
+    white-space: pre-line;
+    margin: 0 0 24px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
   }
   .btn-row{
     display:flex;
@@ -110,30 +109,31 @@
     min-height:60px;
   }
   .btn{
-    padding:14px 34px;
-    border:none;
-    border-radius:50px;
-    font-size:1.05rem;
-    font-weight:600;
-    cursor:pointer;
-    transition:transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    padding: 13px 36px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   }
   .btn:active{transform:scale(0.96);}
   #yesBtn{
-    background:linear-gradient(135deg,var(--accent),var(--accent-2));
-    color:white;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: white;
   }
-  #yesBtn:hover{transform:translateY(-3px) scale(1.04); box-shadow:0 12px 26px rgba(255,92,152,0.4);}
+  #yesBtn:hover{transform:translateY(-3px) scale(1.03); box-shadow:0 12px 26px rgba(255,77,141,0.45);}
   #noBtn{
-    background:var(--white);
-    color:var(--accent);
-    border:2px solid var(--accent);
-    position:relative;
+    background: var(--white);
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    position: relative;
   }
   #noBtn.floating{
-    position:fixed;
-    z-index:50;
+    position: fixed;
+    z-index: 50;
   }
 
   /* ---------- MODAL ---------- */
@@ -141,7 +141,7 @@
     display:none;
     position:fixed;
     inset:0;
-    background:rgba(50,30,50,0.5);
+    background:rgba(40,20,40,0.6);
     z-index:100;
     align-items:center;
     justify-content:center;
@@ -151,13 +151,13 @@
   .modal-box{
     background:var(--white);
     border-radius:20px;
-    padding:30px 26px;
+    padding:28px 24px;
     max-width:360px;
     text-align:center;
     box-shadow:0 20px 50px rgba(0,0,0,0.3);
     animation:floatIn 0.4s ease;
   }
-  .modal-box p{color:var(--text-dark); font-size:1.05rem; margin:0 0 20px; line-height:1.5;}
+  .modal-box p{color:var(--text-dark); font-size:1rem; margin:0 0 20px; line-height:1.5;}
   .modal-box button{
     background:linear-gradient(135deg,var(--accent),var(--accent-2));
     color:white;
@@ -166,7 +166,7 @@
     border-radius:40px;
     font-weight:600;
     cursor:pointer;
-    font-size:1rem;
+    font-size:0.95rem;
   }
 
   /* ---------- SCREEN 2: CELEBRATION ---------- */
@@ -189,22 +189,23 @@
     animation:floatIn 1s ease;
   }
   .reveal-message h2{
-    font-size:2.2rem;
-    margin:0 0 12px;
+    font-family: 'Playfair Display', serif;
+    font-size:2.3rem;
+    margin:0 0 10px;
     background:linear-gradient(90deg,var(--accent),var(--accent-2));
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
-    font-weight:800;
+    font-weight:700;
   }
   .reveal-message p{
     color:var(--text-dark);
-    font-size:1.1rem;
+    font-size:1.05rem;
     line-height:1.6;
     margin:0;
   }
 
-  /* Slideshow (Full image contain / complete view) */
+  /* Slideshow */
   .slideshow-wrap{
     width:100%;
     max-width:540px;
@@ -213,7 +214,7 @@
     overflow:hidden;
     position:relative;
     box-shadow:0 20px 50px rgba(120,60,120,0.25);
-    background:rgba(255,255,255,0.92);
+    background:rgba(255,255,255,0.95);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -224,7 +225,7 @@
     width:100%;
     height:100%;
     object-fit:contain;
-    background:rgba(255,255,255,0.92);
+    background:rgba(255,255,255,0.95);
     opacity:0;
     transition:opacity 0.8s ease-in-out;
   }
@@ -233,7 +234,7 @@
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    background:rgba(255,255,255,0.85);
+    background:rgba(255,255,255,0.88);
     border:none;
     width:44px;height:44px;
     border-radius:50%;
@@ -262,7 +263,7 @@
   .dot{
     width:8px;height:8px;
     border-radius:50%;
-    background:rgba(157,101,255,0.3);
+    background:rgba(138,79,255,0.3);
     transition:background 0.3s ease, transform 0.3s ease;
     cursor:pointer;
   }
@@ -288,20 +289,20 @@
   }
 
   .music-note-hint{
-    margin-top:20px;
+    margin-top:18px;
     font-size:0.85rem;
     color:var(--text-dark);
-    opacity:0.6;
+    opacity:0.7;
     text-align:center;
   }
 
   @media (max-width:480px){
-    .note-card{padding:26px 20px 34px;}
-    .note-card h1{font-size:1.45rem;}
-    .note-card p{font-size:0.95rem;}
+    .note-card{padding:26px 18px 30px;}
+    .note-card h1{font-size:1.6rem;}
+    .note-card p{font-size:0.92rem;}
     .reveal-message h2{font-size:1.7rem;}
     .slideshow-wrap{height:300px;}
-    .btn{padding:12px 26px; font-size:0.98rem;}
+    .btn{padding:12px 24px; font-size:0.95rem;}
   }
 </style>
 </head>
@@ -545,7 +546,7 @@ function resetSlideInterval(){
   
   slideInterval = setInterval(function(){
     goToSlide((currentSlide+1) % slides.length);
-  }, 10000); // 10000ms = 10 seconds
+  }, 10000); // 10 seconds
 }
 </script>
 
