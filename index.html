@@ -1,564 +1,553 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Shikha! 🎂💖</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800&family=Sacramento&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --pink-1: #fff0f5;
-      --pink-2: #ffd1dc;
-      --pink-main: #ff6b8b;
-      --pink-dark: #d83a56;
-      --lav-1: #f3e8ff;
-      --lav-2: #e9d5ff;
-      --peach: #ffe4d6;
-      --text: #4a2e35;
-      --card-bg: rgba(255, 255, 255, 0.88);
-      --shadow: 0 10px 30px rgba(216, 58, 86, 0.18);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Happy Birthday Shikha 🎂</title>
+<style>
+  :root{
+    --pink-1:#ffd6e8;
+    --pink-2:#ffe9f3;
+    --lav-1:#e6d9ff;
+    --lav-2:#f3ecff;
+    --peach:#ffe3d0;
+    --text-dark:#4a2d4a;
+    --accent:#ff5c98;
+    --accent-2:#9d65ff;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0;padding:0;width:100%;height:100%;
+    font-family:'Segoe UI', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x:hidden;
+  }
+  body{
+    min-height:100vh;
+    background:linear-gradient(135deg,var(--pink-2),var(--lav-2),var(--peach));
+    background-size:300% 300%;
+    animation:gradientShift 12s ease infinite;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+  }
+  @keyframes gradientShift{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      -webkit-tap-highlight-color: transparent;
-    }
+  /* ---------- SCREEN 1: NOTE CARD ---------- */
+  .screen{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    padding:20px;
+  }/* ---------- SCREEN 1: NOTE CARD ---------- */
+  .screen{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    position:relative;
+    padding:20px 20px 40px;
+  }
+  #noScreen{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('bg.jpg.png');
+    background-size: contain;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-color: #fdf6f9;
+  }
+  .note-card{
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 24px;
+    max-width: 480px;
+    width: 100%;
+    padding: 24px 22px 28px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+    text-align: center;
+    animation: floatIn 0.9s ease;
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+  }
+  @keyframes floatIn{
+    from{opacity:0; transform:translateY(30px) scale(0.96);}
+    to{opacity:1; transform:translateY(0) scale(1);}
+  }
+  .note-card h1{
+    font-size:1.75rem;
+    margin:0 0 16px;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    font-weight:700;
+  }
+  .note-card p{
+    color:var(--text-dark);
+    font-size:1.02rem;
+    line-height:1.7;
+    text-align:left;
+    white-space:pre-line;
+    margin:0 0 26px;
+  }
+  .btn-row{
+    display:flex;
+    gap:18px;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    position:relative;
+    min-height:60px;
+  }
+  .btn{
+    padding:14px 34px;
+    border:none;
+    border-radius:50px;
+    font-size:1.05rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+  }
+  .btn:active{transform:scale(0.96);}
+  #yesBtn{
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    color:white;
+  }
+  #yesBtn:hover{transform:translateY(-3px) scale(1.04); box-shadow:0 12px 26px rgba(255,92,152,0.4);}
+  #noBtn{
+    background:var(--white);
+    color:var(--accent);
+    border:2px solid var(--accent);
+    position:relative;
+  }
+  #noBtn.floating{
+    position:fixed;
+    z-index:50;
+  }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 100vh;
-      font-family: 'Nunito', sans-serif;
-      color: var(--text);
-      overflow-x: hidden;
-    }
+  /* ---------- MODAL ---------- */
+  .modal-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(50,30,50,0.5);
+    z-index:100;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  }
+  .modal-overlay.show{display:flex;}
+  .modal-box{
+    background:var(--white);
+    border-radius:20px;
+    padding:30px 26px;
+    max-width:360px;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(0,0,0,0.3);
+    animation:floatIn 0.4s ease;
+  }
+  .modal-box p{color:var(--text-dark); font-size:1.05rem; margin:0 0 20px; line-height:1.5;}
+  .modal-box button{
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    color:white;
+    border:none;
+    padding:10px 28px;
+    border-radius:40px;
+    font-weight:600;
+    cursor:pointer;
+    font-size:1rem;
+  }
 
-    body {
-      background: linear-gradient(135deg, var(--pink-1), var(--pink-2), var(--peach), var(--lav-1));
-      background-size: 300% 300%;
-      animation: gradientShift 14s ease infinite;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
+  /* ---------- SCREEN 2: CELEBRATION ---------- */
+  #celebrationScreen{
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    padding:40px 20px 60px;
+    position:relative;
+    z-index:2;
+    width:100%;
+  }
+  #celebrationScreen.show{display:flex;}
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+  .reveal-message{
+    text-align:center;
+    max-width:600px;
+    margin-bottom:26px;
+    animation:floatIn 1s ease;
+  }
+  .reveal-message h2{
+    font-size:2.2rem;
+    margin:0 0 12px;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    font-weight:800;
+  }
+  .reveal-message p{
+    color:var(--text-dark);
+    font-size:1.1rem;
+    line-height:1.6;
+    margin:0;
+  }
 
-    /* Floating particles layer */
-    #particleLayer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-      overflow: hidden;
-    }
+  /* Slideshow (Full image contain / complete view) */
+  .slideshow-wrap{
+    width:100%;
+    max-width:540px;
+    height:380px;
+    border-radius:24px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:0 20px 50px rgba(120,60,120,0.25);
+    background:rgba(255,255,255,0.92);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .slide-img{
+    position:absolute;
+    top:0;left:0;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    background:rgba(255,255,255,0.92);
+    opacity:0;
+    transition:opacity 0.8s ease-in-out;
+  }
+  .slide-img.active{opacity:1;}
+  .slide-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(255,255,255,0.85);
+    border:none;
+    width:44px;height:44px;
+    border-radius:50%;
+    font-size:1.3rem;
+    color:var(--accent);
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:10;
+    transition:background 0.2s ease, transform 0.2s ease;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  }
+  .slide-arrow:hover{background:rgba(255,255,255,1); transform:translateY(-50%) scale(1.08);}
+  .slide-arrow.prev{left:12px;}
+  .slide-arrow.next{right:12px;}
+  
+  .dots{
+    display:flex;
+    gap:6px;
+    justify-content:center;
+    margin-top:16px;
+    flex-wrap:wrap;
+    max-width:440px;
+  }
+  .dot{
+    width:8px;height:8px;
+    border-radius:50%;
+    background:rgba(157,101,255,0.3);
+    transition:background 0.3s ease, transform 0.3s ease;
+    cursor:pointer;
+  }
+  .dot.active{background:var(--accent); transform:scale(1.3);}
 
-    .particle {
-      position: absolute;
-      bottom: -40px;
-      user-select: none;
-      animation: floatUp linear forwards;
-    }
+  /* Particles */
+  #particleLayer{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:5;
+    overflow:hidden;
+  }
+  .particle{
+    position:absolute;
+    top:-40px;
+    font-size:22px;
+    animation:fall linear forwards;
+    user-select:none;
+  }
+  @keyframes fall{
+    to{transform:translateY(110vh) rotate(360deg); opacity:0.2;}
+  }
 
-    @keyframes floatUp {
-      0% {
-        transform: translateY(0) rotate(0deg) scale(0.8);
-        opacity: 0;
-      }
-      15% { opacity: 0.85; }
-      85% { opacity: 0.85; }
-      100% {
-        transform: translateY(-110vh) rotate(360deg) scale(1.1);
-        opacity: 0;
-      }
-    }
+  .music-note-hint{
+    margin-top:20px;
+    font-size:0.85rem;
+    color:var(--text-dark);
+    opacity:0.6;
+    text-align:center;
+  }
 
-    /* Main Screens */
-    .screen {
-      position: relative;
-      z-index: 10;
-      width: 92%;
-      max-width: 580px;
-      padding: 24px 16px;
-      margin: 20px auto;
-    }
-
-    .card {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-radius: 28px;
-      padding: 36px 28px;
-      box-shadow: var(--shadow);
-      border: 2px solid rgba(255, 255, 255, 0.7);
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    h1.title {
-      font-family: 'Sacramento', cursive;
-      font-size: 3.2rem;
-      color: var(--pink-dark);
-      margin-bottom: 12px;
-      line-height: 1.1;
-      text-shadow: 1px 2px 4px rgba(216, 58, 86, 0.15);
-    }
-
-    .letter {
-      font-family: 'Caveat', cursive;
-      font-size: 1.55rem;
-      line-height: 1.45;
-      color: #5a3840;
-      margin: 20px 0 28px 0;
-      text-align: left;
-      background: rgba(255, 255, 255, 0.6);
-      padding: 20px;
-      border-radius: 18px;
-      border-left: 4px solid var(--pink-main);
-    }
-
-    .btn-wrap {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 24px;
-      position: relative;
-      min-height: 56px;
-    }
-
-    .btn {
-      padding: 13px 32px;
-      font-size: 1.15rem;
-      font-weight: 700;
-      border-radius: 50px;
-      border: none;
-      cursor: pointer;
-      font-family: 'Nunito', sans-serif;
-      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
-    }
-
-    .btn-yes {
-      background: linear-gradient(135deg, #ff6b8b, #ff4071);
-      color: #fff;
-      box-shadow: 0 6px 20px rgba(255, 107, 139, 0.45);
-    }
-
-    .btn-yes:hover, .btn-yes:active {
-      transform: scale(1.06);
-      box-shadow: 0 8px 25px rgba(255, 107, 139, 0.6);
-    }
-
-    .btn-no {
-      background: #f1f3f5;
-      color: #6c757d;
-      border: 1px solid #dee2e6;
-    }
-
-    .btn-no.floating {
-      position: fixed !important;
-      z-index: 9999;
-      transition: left 0.22s ease-out, top 0.22s ease-out;
-    }
-
-    /* Modal for "No" clicks */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(4px);
-      z-index: 10000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .modal-overlay.show { display: flex; }
-
-    .modal-card {
-      background: #fff;
-      border-radius: 24px;
-      padding: 30px 24px;
-      max-width: 380px;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    }
-
-    .modal-card h3 {
-      font-size: 1.5rem;
-      color: var(--pink-dark);
-      margin-bottom: 12px;
-    }
-
-    .modal-card p {
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 20px;
-      line-height: 1.4;
-    }
-
-    /* Celebration & Slideshow screen */
-    #celebrationScreen { display: none; }
-    #celebrationScreen.show { display: block; }
-
-    .slideshow-container {
-      position: relative;
-      width: 100%;
-      max-width: 480px;
-      margin: 20px auto 14px auto;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 12px 28px rgba(216, 58, 86, 0.2);
-      aspect-ratio: 4 / 5;
-      background: #f8f9fa;
-    }
-
-    .slide-img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      display: block;
-    }
-
-    .slide-img.active {
-      opacity: 1;
-      z-index: 2;
-    }
-
-    .nav-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.75);
-      border: none;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      font-size: 1.3rem;
-      color: var(--pink-dark);
-      cursor: pointer;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      transition: background 0.2s;
-    }
-
-    .nav-arrow:hover { background: #fff; }
-    .prev-btn { left: 10px; }
-    .next-btn { right: 10px; }
-
-    .dots-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 6px;
-      max-height: 48px;
-      overflow-y: auto;
-      padding: 6px 12px;
-      margin-bottom: 12px;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      background: #e0b0bc;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .dot.active {
-      background: var(--pink-main);
-      transform: scale(1.4);
-    }
-
-    .audio-note {
-      font-size: 0.88rem;
-      color: #8b5d67;
-      margin-top: 10px;
-    }
-
-    @media (max-width: 480px) {
-      h1.title { font-size: 2.6rem; }
-      .letter { font-size: 1.35rem; }
-      .card { padding: 26px 18px; }
-    }
-  </style>
+  @media (max-width:480px){
+    .note-card{padding:26px 20px 34px;}
+    .note-card h1{font-size:1.45rem;}
+    .note-card p{font-size:0.95rem;}
+    .reveal-message h2{font-size:1.7rem;}
+    .slideshow-wrap{height:300px;}
+    .btn{padding:12px 26px; font-size:0.98rem;}
+  }
+</style>
 </head>
 <body>
 
-  <!-- Floating particle layer -->
-  <div id="particleLayer"></div>
+<div id="particleLayer"></div>
 
-  <!-- SCREEN 1: Landing Letter Note -->
-  <div class="screen" id="noScreen">
-    <div class="card">
-      <h1 class="title">Happy Birthday Shikha! 🎂💖</h1>
-      
-      <div class="letter">
-        <p>time—it's August 25th, exactly 6:00 AM! That makes me the very first person to wish you, because you were born at 6:00 AM. (If you don't believe me, you can confirm with your family!)</p>
-        <br>
-        <p>So see, I wasn't late; I timed it perfectly.</p>
-        <br>
-        <p>Here is a little gift from my side. Click the "Yes" button below to see more. And don't even bother trying to click "No"—it's quite literally not an option! 😉</p>
-      </div>
+<div class="screen" id="noScreen">
+  <div class="note-card">
+    <h1>Hi Shikha,</h1>
+    <p>First of all, happy birthday! I know you might be thinking I'm late to wish you, but I'm actually not late at all. Check the time—it's August 25th, exactly 6:00 AM! That makes me the very first person to wish you, because you were born at 6:00 AM. (If you don't believe me, you can confirm with your family!)
 
-      <div class="btn-wrap">
-        <button class="btn btn-yes" id="yesBtn">Yes! ✨</button>
-        <button class="btn btn-no" id="noBtn">No</button>
-      </div>
+So see, I wasn't late; I timed it perfectly.
+
+Here is a little gift from my side. Click the "Yes" button below to see more. And don't even bother trying to click "No"—you can try, but you won't be able to! Give it a shot if you don't believe me.</p>
+    <div class="btn-row">
+      <button class="btn" id="yesBtn">Yes 🎉</button>
+      <button class="btn" id="noBtn">No</button>
     </div>
   </div>
+</div>
 
-  <!-- Modal fallback for "No" click -->
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal-card">
-      <h3>Nice try! 😉</h3>
-      <p>I told you "No" is not an option! Click "Yes" and enjoy your special surprise!</p>
-      <button class="btn btn-yes" id="modalCloseBtn">Okay, take me to Yes! 💖</button>
-    </div>
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <p>There is no option available! Go back and click on the Yes option.</p>
+    <button id="modalCloseBtn">Okay</button>
+  </div>
+</div>
+
+<div class="screen" id="celebrationScreen">
+  <div class="reveal-message">
+    <h2>Happy Birthday Shikha! 🎂💖</h2>
+    <p>Wishing you the happiest year ahead, filled with love, laughter, and every little thing that makes you smile!</p>
   </div>
 
-  <!-- SCREEN 2: Celebration & Photo Slideshow -->
-  <div class="screen" id="celebrationScreen">
-    <div class="card">
-      <h1 class="title">Happy Birthday Shikha! 🎂💜</h1>
-      <p style="font-size:1.1rem; margin-bottom: 16px; color:#6a424b;">
-        Wishing you the happiest year ahead, filled with love, laughter, and every little thing that makes you smile!
-      </p>
-
-      <div class="slideshow-container" id="slideshowWrap">
-        <button class="nav-arrow prev-btn" id="prevBtn">❮</button>
-        <button class="nav-arrow next-btn" id="nextBtn">❯</button>
-      </div>
-
-      <div class="dots-container" id="dotsWrap"></div>
-      <p class="audio-note">🎵 playing your song on loop...</p>
-    </div>
+  <div class="slideshow-wrap" id="slideshowWrap">
+    <button class="slide-arrow prev" id="prevBtn">&#10094;</button>
+    <button class="slide-arrow next" id="nextBtn">&#10095;</button>
   </div>
+  <div class="dots" id="dotsWrap"></div>
 
-  <!-- Background audio file -->
-  <audio id="bgMusic" loop preload="auto">
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+  <p class="music-note-hint">🎵 playing your song on loop...</p>
+</div>
 
-  <script>
-    /* ================= PASSWORD PROTECTION ================= */
-    const CORRECT_PASSWORD = "Shikha#98552"; // 👈 Set your secret password here
+<audio id="bgMusic" loop preload="auto">
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
 
-    function checkAccess() {
-      let entered = prompt("🔐 Please enter the password to view your surprise:");
-      while (entered !== CORRECT_PASSWORD) {
-        if (entered === null) {
-          document.body.innerHTML = "<h2 style='text-align:center; margin-top:20%; font-family:sans-serif; color:#d83a56;'>Access Denied 🔒</h2>";
-          throw new Error("Access Denied");
-        }
-        entered = prompt("❌ Incorrect password. Please try again:");
-      }
-    }
-    checkAccess();
+<script>
+/* Auto-load photos and pre-filter valid ones */
+const TOTAL_PHOTOS = 179;
+const candidateImages = Array.from({ length: TOTAL_PHOTOS }, (_, i) => `photos/temp_${i + 1}.jpg`);
+let validImages = [];
 
-    /* ================= PHOTO CONFIGURATION ================= */
-    const TOTAL_PHOTOS = 84; // 👈 Total number of photos in photos/ folder
-    const candidateImages = Array.from({ length: TOTAL_PHOTOS }, (_, i) => `photos/${i + 1}.jpg`);
-    let validImages = [];
+function loadValidImages(callback) {
+  let loadedCount = 0;
+  candidateImages.forEach((src) => {
+    const img = new Image();
+    img.onload = function() {
+      validImages.push(src);
+      loadedCount++;
+      if (loadedCount === candidateImages.length && callback) callback();
+    };
+    img.onerror = function() {
+      loadedCount++;
+      if (loadedCount === candidateImages.length && callback) callback();
+    };
+    img.src = src;
+  });
+}
+loadValidImages();
 
-    function loadValidImages(callback) {
-      let loadedCount = 0;
-      candidateImages.forEach((src) => {
-        const img = new Image();
-        img.onload = function() {
-          validImages.push(src);
-          loadedCount++;
-          if (loadedCount === candidateImages.length && callback) callback();
-        };
-        img.onerror = function() {
-          loadedCount++;
-          if (loadedCount === candidateImages.length && callback) callback();
-        };
-        img.src = src;
-      });
-    }
+/* ===================== NO BUTTON DODGE LOGIC ===================== */
+const noBtn = document.getElementById('noBtn');
+const yesBtn = document.getElementById('yesBtn');
 
-    /* ================= NO BUTTON DODGE LOGIC ================= */
-    const noBtn = document.getElementById('noBtn');
-    const yesBtn = document.getElementById('yesBtn');
+function moveNoButtonRandomly(){
+  const btnWidth = noBtn.offsetWidth || 120;
+  const btnHeight = noBtn.offsetHeight || 50;
+  const margin = 16;
 
-    function moveNoButtonRandomly() {
-      const btnWidth = noBtn.offsetWidth || 100;
-      const btnHeight = noBtn.offsetHeight || 44;
-      const margin = 20;
-      const maxX = window.innerWidth - btnWidth - margin;
-      const maxY = window.innerHeight - btnHeight - margin;
-      const randX = Math.max(margin, Math.random() * maxX);
-      const randY = Math.max(margin, Math.random() * maxY);
-      
-      if (!noBtn.classList.contains('floating')) {
-        noBtn.classList.add('floating');
-      }
-      noBtn.style.left = randX + 'px';
-      noBtn.style.top = randY + 'px';
-    }
+  const maxX = window.innerWidth - btnWidth - margin;
+  const maxY = window.innerHeight - btnHeight - margin;
 
-    noBtn.addEventListener('mouseenter', moveNoButtonRandomly);
-    noBtn.addEventListener('touchstart', function(e) {
-      e.preventDefault();
-      moveNoButtonRandomly();
-    }, { passive: false });
+  const randX = Math.max(margin, Math.random() * maxX);
+  const randY = Math.max(margin, Math.random() * maxY);
 
-    noBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.getElementById('modalOverlay').classList.add('show');
-      moveNoButtonRandomly();
+  if(!noBtn.classList.contains('floating')){
+    noBtn.classList.add('floating');
+  }
+  noBtn.style.left = randX + 'px';
+  noBtn.style.top = randY + 'px';
+}
+
+noBtn.addEventListener('mouseenter', moveNoButtonRandomly);
+noBtn.addEventListener('touchstart', function(e){
+  e.preventDefault();
+  moveNoButtonRandomly();
+}, { passive:false });
+
+noBtn.addEventListener('click', function(e){
+  e.preventDefault();
+  document.getElementById('modalOverlay').classList.add('show');
+  moveNoButtonRandomly();
+});
+
+window.addEventListener('resize', function(){
+  if(noBtn.classList.contains('floating')){
+    moveNoButtonRandomly();
+  }
+});
+
+document.getElementById('modalCloseBtn').addEventListener('click', function(){
+  document.getElementById('modalOverlay').classList.remove('show');
+});
+
+/* ===================== MUSIC ===================== */
+const bgMusic = document.getElementById('bgMusic');
+bgMusic.volume = 0.85;
+
+function tryStartMusic(){
+  if(!bgMusic.paused) return;
+  const playPromise = bgMusic.play();
+  if(playPromise !== undefined){
+    playPromise.catch(function(err){
+      console.log('Autoplay waiting for tap/click:', err);
     });
+  }
+}
 
-    window.addEventListener('resize', function() {
-      if (noBtn.classList.contains('floating')) {
-        moveNoButtonRandomly();
-      }
+window.addEventListener('DOMContentLoaded', tryStartMusic);
+tryStartMusic();
+
+function firstInteractionHandler(){
+  tryStartMusic();
+  document.removeEventListener('click', firstInteractionHandler);
+  document.removeEventListener('touchstart', firstInteractionHandler);
+}
+document.addEventListener('click', firstInteractionHandler);
+document.addEventListener('touchstart', firstInteractionHandler);
+
+/* ===================== YES BUTTON ACTION ===================== */
+yesBtn.addEventListener('click', function(){
+  document.getElementById('noScreen').style.display = 'none';
+  document.getElementById('celebrationScreen').classList.add('show');
+
+  tryStartMusic();
+  startParticles();
+  
+  if (validImages.length > 0) {
+    initSlideshow();
+  } else {
+    loadValidImages(() => {
+      initSlideshow();
     });
+  }
+});
 
-    document.getElementById('modalCloseBtn').addEventListener('click', function() {
-      document.getElementById('modalOverlay').classList.remove('show');
-    });
+/* ===================== PARTICLE ANIMATION ===================== */
+const particleLayer = document.getElementById('particleLayer');
+const particleSymbols = ['💖','💕','✨','🎉','💗','🎈'];
 
-    /* ================= MUSIC ================= */
-    const bgMusic = document.getElementById('bgMusic');
-    bgMusic.volume = 0.85;
+function startParticles(){
+  setInterval(spawnParticle, 220);
+  for(let i=0;i<15;i++){
+    setTimeout(spawnParticle, i*80);
+  }
+}
 
-    function tryStartMusic() {
-      if (!bgMusic.paused) return;
-      const playPromise = bgMusic.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(function(err) {
-          console.log('Autoplay waiting for user gesture:', err);
-        });
-      }
-    }
+function spawnParticle(){
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.textContent = particleSymbols[Math.floor(Math.random()*particleSymbols.length)];
+  const startX = Math.random() * window.innerWidth;
+  const duration = 4 + Math.random()*3;
+  const size = 16 + Math.random()*18;
+  p.style.left = startX + 'px';
+  p.style.fontSize = size + 'px';
+  p.style.animationDuration = duration + 's';
+  particleLayer.appendChild(p);
+  setTimeout(function(){ p.remove(); }, duration*1000 + 200);
+}
 
-    window.addEventListener('DOMContentLoaded', tryStartMusic);
-    function firstInteractionHandler() {
-      tryStartMusic();
-      document.removeEventListener('click', firstInteractionHandler);
-      document.removeEventListener('touchstart', firstInteractionHandler);
-    }
-    document.addEventListener('click', firstInteractionHandler);
-    document.addEventListener('touchstart', firstInteractionHandler);
+/* ===================== SLIDESHOW ===================== */
+let currentSlide = 0;
+let slideInterval;
 
-    /* ================= YES BUTTON ACTION ================= */
-    yesBtn.addEventListener('click', function() {
-      document.getElementById('noScreen').style.display = 'none';
-      document.getElementById('celebrationScreen').classList.add('show');
-      tryStartMusic();
-      startParticles();
-      if (validImages.length > 0) {
-        initSlideshow();
-      } else {
-        loadValidImages(() => { initSlideshow(); });
-      }
-    });
+function initSlideshow(){
+  const wrap = document.getElementById('slideshowWrap');
+  const dotsWrap = document.getElementById('dotsWrap');
+  
+  wrap.querySelectorAll('.slide-img').forEach(el => el.remove());
+  dotsWrap.innerHTML = '';
 
-    /* ================= PARTICLE ANIMATION ================= */
-    const particleLayer = document.getElementById('particleLayer');
-    const particleSymbols = ['💖', '💕', '✨', '🎉', '🌸', '🎈'];
+  const activeImages = validImages.length > 0 ? validImages : candidateImages;
 
-    function startParticles() {
-      setInterval(spawnParticle, 220);
-      for (let i = 0; i < 15; i++) {
-        setTimeout(spawnParticle, i * 80);
-      }
-    }
+  activeImages.forEach(function(src, i){
+    const img = document.createElement('img');
+    img.src = src;
+    img.className = 'slide-img' + (i===0 ? ' active' : '');
+    img.alt = 'Memory photo ' + (i+1);
+    wrap.insertBefore(img, document.getElementById('prevBtn'));
 
-    function spawnParticle() {
-      const p = document.createElement('div');
-      p.className = 'particle';
-      p.textContent = particleSymbols[Math.floor(Math.random() * particleSymbols.length)];
-      const startX = Math.random() * window.innerWidth;
-      const duration = 4 + Math.random() * 3;
-      const size = 16 + Math.random() * 18;
-      p.style.left = startX + 'px';
-      p.style.fontSize = size + 'px';
-      p.style.animationDuration = duration + 's';
-      particleLayer.appendChild(p);
-      setTimeout(function() { p.remove(); }, duration * 1000 + 200);
-    }
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i===0 ? ' active' : '');
+    dot.addEventListener('click', function(){ goToSlide(i); });
+    dotsWrap.appendChild(dot);
+  });
 
-    /* ================= SLIDESHOW ================= */
-    let currentSlide = 0;
-    let slideInterval;
+  document.getElementById('nextBtn').addEventListener('click', function(){
+    goToSlide((currentSlide+1) % activeImages.length);
+    resetSlideInterval();
+  });
+  document.getElementById('prevBtn').addEventListener('click', function(){
+    goToSlide((currentSlide-1+activeImages.length) % activeImages.length);
+    resetSlideInterval();
+  });
 
-    function initSlideshow() {
-      const wrap = document.getElementById('slideshowWrap');
-      const dotsWrap = document.getElementById('dotsWrap');
-      wrap.querySelectorAll('.slide-img').forEach(el => el.remove());
-      dotsWrap.innerHTML = '';
+  resetSlideInterval();
+}
 
-      const activeImages = validImages.length > 0 ? validImages : candidateImages;
-      activeImages.forEach(function(src, i) {
-        const img = document.createElement('img');
-        img.src = src;
-        img.className = 'slide-img' + (i === 0 ? ' active' : '');
-        img.alt = 'Memory photo ' + (i + 1);
-        wrap.insertBefore(img, document.getElementById('prevBtn'));
+function goToSlide(index){
+  const slides = document.querySelectorAll('.slide-img');
+  const dots = document.querySelectorAll('.dot');
+  if (slides.length === 0) return;
 
-        const dot = document.createElement('div');
-        dot.className = 'dot' + (i === 0 ? ' active' : '');
-        dot.addEventListener('click', function() { goToSlide(i); });
-        dotsWrap.appendChild(dot);
-      });
+  slides[currentSlide].classList.remove('active');
+  if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
+  
+  currentSlide = index;
+  
+  slides[currentSlide].classList.add('active');
+  if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+}
 
-      document.getElementById('nextBtn').addEventListener('click', function() {
-        goToSlide((currentSlide + 1) % activeImages.length);
-        resetSlideInterval();
-      });
-      document.getElementById('prevBtn').addEventListener('click', function() {
-        goToSlide((currentSlide - 1 + activeImages.length) % activeImages.length);
-        resetSlideInterval();
-      });
+/* 10-second slide rotation */
+function resetSlideInterval(){
+  clearInterval(slideInterval);
+  const slides = document.querySelectorAll('.slide-img');
+  if (slides.length <= 1) return;
+  
+  slideInterval = setInterval(function(){
+    goToSlide((currentSlide+1) % slides.length);
+  }, 10000); // 10000ms = 10 seconds
+}
+</script>
 
-      resetSlideInterval();
-    }
-
-    function goToSlide(index) {
-      const slides = document.querySelectorAll('.slide-img');
-      const dots = document.querySelectorAll('.dot');
-      if (slides.length === 0) return;
-      slides[currentSlide].classList.remove('active');
-      if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
-      currentSlide = index;
-      slides[currentSlide].classList.add('active');
-      if (dots[currentSlide]) dots[currentSlide].classList.add('active');
-    }
-
-    function resetSlideInterval() {
-      clearInterval(slideInterval);
-      const slides = document.querySelectorAll('.slide-img');
-      if (slides.length <= 1) return;
-      slideInterval = setInterval(function() {
-        goToSlide((currentSlide + 1) % slides.length);
-      }, 10000); // 10 seconds per photo
-    }
-  </script>
 </body>
 </html>
