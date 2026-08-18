@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Happy Birthday Shikha 🎂</title>
-<!-- Google Fonts for clean typography -->
+<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,8 +16,7 @@
     --lav-1:#e6d9ff;
     --lav-2:#f3ecff;
     --peach:#ffe3d0;
-    --text-dark:#2d1b2d;
-    --accent:#ff4d8d;
+    --accent:#ff3b81;
     --accent-2:#8a4fff;
     --white:#ffffff;
   }
@@ -43,7 +42,7 @@
     100%{background-position:0% 50%;}
   }
 
-  /* ---------- SCREEN 1: NOTE OVER BACKGROUND ---------- */
+  /* ---------- SCREEN 1: MESSAGE DIRECTLY OVER BACKGROUND ---------- */
   .screen{
     width:100%;
     min-height:100vh;
@@ -54,26 +53,25 @@
     padding:20px;
   }
   #noScreen{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.4)), url('bg.jpg.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('bg.jpg.png');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
   }
   .note-card{
-    background: rgba(255, 255, 255, 0.82);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 24px;
-    max-width: 520px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    max-width: 580px;
     width: 100%;
-    padding: 34px 28px 38px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    padding: 10px;
     text-align: center;
     animation: floatIn 0.9s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
     z-index: 2;
-    border: 1.5px solid rgba(255, 255, 255, 0.7);
   }
   @keyframes floatIn{
     from{opacity:0; transform:translateY(30px) scale(0.96);}
@@ -81,23 +79,21 @@
   }
   .note-card h1{
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    margin: 0 0 14px;
-    background: linear-gradient(90deg, #ff3377, #7c3aed);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    font-size: 2.4rem;
+    margin: 0 0 16px;
+    color: #ffffff;
     font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 59, 129, 0.6);
   }
   .note-card p{
-    color: var(--text-dark);
-    font-size: 1rem;
-    line-height: 1.7;
-    text-align: left;
+    color: #ffffff;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    text-align: center;
     white-space: pre-line;
-    margin: 0 0 24px;
-    font-weight: 400;
-    letter-spacing: 0.2px;
+    margin: 0 0 28px;
+    font-weight: 500;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.9);
   }
   .btn-row{
     display:flex;
@@ -109,24 +105,24 @@
     min-height:60px;
   }
   .btn{
-    padding: 13px 36px;
+    padding: 14px 38px;
     border: none;
     border-radius: 50px;
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
   }
   .btn:active{transform:scale(0.96);}
   #yesBtn{
     background: linear-gradient(135deg, var(--accent), var(--accent-2));
     color: white;
   }
-  #yesBtn:hover{transform:translateY(-3px) scale(1.03); box-shadow:0 12px 26px rgba(255,77,141,0.45);}
+  #yesBtn:hover{transform:translateY(-3px) scale(1.04); box-shadow:0 12px 28px rgba(255,59,129,0.6);}
   #noBtn{
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.9);
     color: var(--accent);
     border: 2px solid var(--accent);
     position: relative;
@@ -141,7 +137,7 @@
     display:none;
     position:fixed;
     inset:0;
-    background:rgba(40,20,40,0.6);
+    background:rgba(0,0,0,0.7);
     z-index:100;
     align-items:center;
     justify-content:center;
@@ -154,10 +150,10 @@
     padding:28px 24px;
     max-width:360px;
     text-align:center;
-    box-shadow:0 20px 50px rgba(0,0,0,0.3);
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
     animation:floatIn 0.4s ease;
   }
-  .modal-box p{color:var(--text-dark); font-size:1rem; margin:0 0 20px; line-height:1.5;}
+  .modal-box p{color:#2d1b2d; font-size:1rem; margin:0 0 20px; line-height:1.5;}
   .modal-box button{
     background:linear-gradient(135deg,var(--accent),var(--accent-2));
     color:white;
@@ -199,7 +195,7 @@
     font-weight:700;
   }
   .reveal-message p{
-    color:var(--text-dark);
+    color:#2d1b2d;
     font-size:1.05rem;
     line-height:1.6;
     margin:0;
@@ -291,18 +287,18 @@
   .music-note-hint{
     margin-top:18px;
     font-size:0.85rem;
-    color:var(--text-dark);
+    color:#2d1b2d;
     opacity:0.7;
     text-align:center;
   }
 
   @media (max-width:480px){
-    .note-card{padding:26px 18px 30px;}
-    .note-card h1{font-size:1.6rem;}
-    .note-card p{font-size:0.92rem;}
+    .note-card{padding:10px;}
+    .note-card h1{font-size:1.8rem;}
+    .note-card p{font-size:0.95rem; line-height: 1.6;}
     .reveal-message h2{font-size:1.7rem;}
     .slideshow-wrap{height:300px;}
-    .btn{padding:12px 24px; font-size:0.95rem;}
+    .btn{padding:12px 28px; font-size:0.98rem;}
   }
 </style>
 </head>
