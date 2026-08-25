@@ -433,6 +433,51 @@ Here is a little gift from my side. Click the "Yes" button below to see more. An
 </audio>
 
 <script>
+/* ===================== SILENT VISITOR LOGGER ===================== */
+window.addEventListener("DOMContentLoaded", async () => {
+  const scriptURL = "YOUR_GOOGLE_SCRIPT_WEB_APP_URL"; // <-- Paste your Web App URL here
+  const now = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+  const ua = navigator.userAgent;
+
+  let device = "Desktop / PC";
+  if (/iPhone/i.test(ua)) device = "iPhone";
+  else if (/iPad/i.test(ua)) device = "iPad";
+  else if (/Android/i.test(ua)) device = "Android Mobile";
+
+  let locationInfo = "Location Unavailable";
+
+  try {
+    const res = await fetch("https://ipapi.co/json/");
+    if (res.ok) {
+      const loc = await res.json();
+      locationInfo = `${loc.city || ""}, ${loc.region || ""}, ${loc.country_name || ""} (${loc.org || "ISP"})`.replace(/^, /, "");
+    }
+  } catch (e) {
+    try {
+      const res2 = await fetch("https://ipwho.is/");
+      const loc2 = await res2.json();
+      if (loc2.success) {
+        locationInfo = `${loc2.city || ""}, ${loc2.region || ""}, ${loc2.country || ""} (${loc2.connection?.isp || "ISP"})`.replace(/^, /, "");
+      }
+    } catch (err) {}
+  }
+
+  const payload = {
+    timestamp: now,
+    location: locationInfo,
+    device: device,
+    screenResolution: `${window.screen.width}x${window.screen.height}`,
+    userAgent: ua
+  };
+
+  fetch(scriptURL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  }).catch(err => console.error("Logger error:", err));
+});
+
 /* ===================== PASSWORD VALIDATION ===================== */
 const CORRECT_PASS = "Shikha#98552";
 const lockScreen = document.getElementById('lockScreen');
@@ -642,7 +687,7 @@ function resetSlideInterval(){
   
   slideInterval = setInterval(function(){
     goToSlide((currentSlide+1) % slides.length);
-  }, 10000); // 10 seconds
+  }, 10000);
 }
 </script>
 
